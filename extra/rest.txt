@@ -1,0 +1,29 @@
+  <script>
+  let mode = localStorage.getItem("jsMode") || "promise";
+  let script = document.createElement("script");
+  if(mode === "async"){
+    script.src = "scripts-async.js";
+  }else{
+    script.src = "scripts-promises.js";
+  }
+  script.defer = true;
+  document.head.appendChild(script);
+  </script>
+
+    <script>
+  const jsToggle = document.getElementById("js-toggle");
+  let currentMode = localStorage.getItem("jsMode") || "promise";
+  jsToggle.textContent =
+      currentMode === "promise"
+      ? "Switch to Async Version"
+      : "Switch to Promise Version";
+  jsToggle.addEventListener("click", () => {
+      currentMode = currentMode === "promise" ? "async" : "promise";
+      localStorage.setItem("jsMode", currentMode);
+      location.reload();
+  });
+  </script>
+
+    <button id="js-toggle" style="float:right;margin-right:10px;">
+  Switch to Async Version
+  </button>
