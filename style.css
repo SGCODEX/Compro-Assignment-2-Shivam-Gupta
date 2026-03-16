@@ -1,0 +1,120 @@
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+body.dark-mode .container {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode table {
+    color: white;
+}
+
+/* Inputs */
+body.dark-mode input,
+body.dark-mode select {
+    background-color: #333;
+    color: white;
+    border: 1px solid #666;
+}
+
+/* Buttons */
+body.dark-mode button {
+    background-color: #444;
+    color: white;
+}
+
+/* Fix Examined Book (Bootstrap list group) */
+body.dark-mode .list-group-item {
+    background-color: #2a2a2a;
+    color: white;
+    border-color: #444;
+}
+
+/* Fix Pagination */
+body.dark-mode .page-link {
+    background-color: #2a2a2a;
+    color: white;
+    border-color: #444;
+}
+
+body.dark-mode .page-link:hover {
+    background-color: #444;
+    color: white;
+}
+
+body.dark-mode .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+.btn{
+    padding:6px 12px;
+    border-radius:6px;
+    border:1px solid #ccc;
+    background:#f5f5f5;
+    cursor:pointer;
+}
+
+.btn:hover{
+    background:#e5e5e5;
+}
+
+
+/* LANDING PAGE */
+
+.landing{
+    margin:0;
+    height:100vh;
+
+    background-image:url("https://images.unsplash.com/photo-1512820790803-83ca734da794");
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.landing-box{
+    text-align:center;
+
+    background:rgba(0,0,0,0.65);
+    color:white;
+
+    padding:50px 70px;
+    border-radius:12px;
+}
+
+.landing-box h1{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.landing-box p{
+    font-size:18px;
+    opacity:0.9;
+}
+
+.enter-btn{
+    margin-top:25px;
+
+    padding:12px 28px;
+    font-size:18px;
+
+    border:none;
+    border-radius:8px;
+
+    background:#ff9800;
+    color:white;
+
+    cursor:pointer;
+}
+
+.enter-btn:hover{
+    background:#e68900;
+}

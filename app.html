@@ -1,0 +1,134 @@
+<html lang="en">
+
+ <head>
+ <script id="script-loader" src="scripts-promises.js" defer></script>
+ <!-- <script id="script-loader" src="scripts-async.js" defer></script> -->
+ <link rel="stylesheet" href="style.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+ <title>Book Catalog</title>
+ </head>
+
+ <body class="dark-mode">
+
+  <button id="theme-toggle" style="float:right;margin-bottom:10px;">
+      ☀ Light Mode
+  </button>
+
+    <div id="div-search" class="container mb-4 p-3" style="margin-bottom:20px; padding:10px 20px;">
+    <h3>Search Books</h3>
+    <form action="#" id="search-form" style="display:flex; flex-wrap:wrap; gap:10px;">
+    <input type="text" id="input-search-name" class="formcontrol" style="flex:1 1 20%; min-width:180px;" placeholder="Book Name">
+    <!-- <input type="text" id="input-search-genre" class="formcontrol" style="width:20%;display:inline;margin-top:1%" placeholder="Genre" list="genre-options"><datalist id="genre-options"></datalist> -->
+    <input type="text" id="input-search-author" class="formcontrol" style="flex:1 1 20%; min-width:180px;" placeholder="Author">
+    <input type="text" id="input-search-price-min" class="formcontrol" style="flex:1 1 20%; min-width:180px;" placeholder="Price Min">
+    <input type="text" id="input-search-price-max" class="formcontrol" style="flex:1 1 20%; min-width:180px;" placeholder="Price Max">
+    <input type="text" id="input-search-id" class="formcontrol" style="flex:1 1 20%; min-width:180px;" placeholder="Book Id">
+    <input type="text" id="input-search-language" class="formcontrol" style="flex:1 1 20%; min-width:180px;" placeholder="Language">
+    <input type="text" id="input-search-year-from" class="formcontrol" style="flex:1 1 20%; min-width:180px;" placeholder="Publication Year From">
+    <input type="text" id="input-search-year-to" class="formcontrol" style="flex:1 1 20%; min-width:180px;" placeholder="Publication Year To">
+    <div id="genre-container" style="flex:1 1 100%; min-width:180px;border:1px solid #808080;padding:4px;overflow-x:auto;white-space:nowrap;">
+      <input type="text" id="input-search-genre" placeholder="Genre" list="genre-options" style="border:none;outline:none;">
+    </div>
+    <datalist id="genre-options"></datalist>
+    <div style="width:100%; display:flex; gap:10px; margin-top:10px;">
+    <button id="btn-search" class="btn" type="submit" style="flex:2">Search</button>
+    <button id="btn-clear" class="btn" type="button" style="flex:1">Clear</button>
+    </div>
+
+    
+
+    <!-- <button id="btn-aesc" class="btn" type="" style="width:15%;display:inline;margin-top:1%">Sort(Aesc)</button>
+    <button id="btn-desc" class="btn" type="" style="width:15%;display:inline;margin-top:1%">Sort(Desc)</button> -->
+    </form>
+    </div>
+
+    <div id="div-examined-book" class="container mb-4 p-3" style="margin-bottom:20px; padding:10px 20px;">
+    <h3>Examined Book</h3>
+    <ul id="list-examined-book" class="list-group">
+    <li class="list-group-item">S No: <span id="sno"></span></li>
+    <li class="list-group-item">Book Name: <span id="book-name"></span></li>
+    <li class="list-group-item">Book Id: <span id="bookid"></span></li>
+    <li class="list-group-item">Genre: <span id="bookgenre"></span></li>
+    <li class="list-group-item">Price: <span id="bookprice"></span></li>
+    <li class="list-group-item">Author: <span id="bookauthor"></span></li>
+    <li class="list-group-item">Publication Year: <span id="book-year"></span></li>
+    <li class="list-group-item">Language: <span id="book-lang"></span></li>
+    </ul>
+    </div>
+
+    <div class="container mb-4 p-3" style="margin-bottom:20px; padding:10px 20px;">
+    <h3>List of Similar Books</h3>
+    <div class="table-responsive">
+    <table id="table-similar-books" class="table">
+    <thead>
+    <th>S No</th>
+    <th>Book Name</th>
+    <th>BookId</th>
+    <th>Genre</th>
+    <th>Price</th>
+    <th>Author</th>
+    <th>Publication Year</th>
+    <th>Language</th>
+    <th>Examine</th>
+    </thead>
+    <tbody id="table-similar-books-body"></tbody>
+    </table>
+    </div>
+    </div>
+
+    <div class="container mb-4 p-3" style="margin-bottom:20px; padding:10px 20px;">
+
+    <div class="d-flex flex-wrap justify-content-start align-items-center gap-4">
+    <label for="rows" class="mr-2">Show:</label>
+    <select name="rows" id="rows">
+      <option value = 5>5</option>
+      <option value = 10 selected>10</option>
+      <option value = 25>25</option>
+    </select>
+    </div>
+
+    <br>
+
+    <div style="display:flex; justify-content:center; align-items:center; gap:10px; margin:10px 0px; flex-wrap:wrap;">
+      <p style="margin:0;">Sort By:</p>
+      <button id="btn-sort-de" class="btn" type="button">Default</button>
+      <button id="btn-sort-pa" class="btn" type="button">Price ↓</button>
+      <button id="btn-sort-pd" class="btn" type="button">Price ↑</button>
+      <button id="btn-sort-ya" class="btn" type="button">Year ↓</button>
+      <button id="btn-sort-yd" class="btn" type="button">Year ↑</button>
+    </div>
+
+    <h3>List of All Books</h3>
+    <div class="table-responsive">
+    <table id="table-all-books" class="table">
+    <thead>
+    <th>S No</th>
+    <th>Book Name</th>
+    <th>BookId</th>
+    <th>Genre</th>
+    <th>Price</th>
+    <th>Author</th>
+    <th>Publication Year</th>
+    <th>Language</th>
+    <th>Examine</th>
+    </thead>
+    <tbody id="table-all-books-body"></tbody>
+    </table>
+    </div>
+    <nav class="d-flex justify-content-center" aria-label="Page navigation">
+    <ul class="pagination flex-wrap justify-content-center" id="pagination">
+    <!-- <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
+    </ul>
+    </nav>
+
+    </div>
+
+ </body>
+</html>
